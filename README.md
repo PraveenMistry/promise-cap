@@ -1,4 +1,4 @@
-# p-cap
+# promise-cap
 
 > Run async functions with limited concurrency — with priority queuing, AbortSignal, per-task timeouts, pause/resume, and deadlock detection. **Zero dependencies.**
 
@@ -7,13 +7,13 @@ Built as a drop-in improvement over [`p-limit`](https://github.com/sindresorhus/
 ## Install
 
 ```sh
-npm install p-cap
+npm install promise-cap
 ```
 
 ## Quick start
 
 ```js
-import pCap from 'p-cap';
+import pCap from 'promise-cap';
 
 const limit = pCap(3); // max 3 concurrent tasks
 
@@ -129,7 +129,7 @@ limit.concurrency = 10; // immediately starts more queued tasks if available
 Wrap a single function with its own built-in limiter.
 
 ```js
-import { limitFunction } from 'p-cap';
+import { limitFunction } from 'promise-cap';
 
 const fetchWithLimit = limitFunction(fetch, { concurrency: 2 });
 
@@ -147,7 +147,7 @@ await Promise.all([
 All errors are exported as named classes:
 
 ```js
-import { AbortError, TimeoutError, DeadlockError } from 'p-cap';
+import { AbortError, TimeoutError, DeadlockError } from 'promise-cap';
 ```
 
 | Class | When thrown |
@@ -191,7 +191,7 @@ limit.run(handleUserRequest, { priority: 100 });
 ### Rate-limited API client
 
 ```js
-import { limitFunction } from 'p-cap';
+import { limitFunction } from 'promise-cap';
 
 const callApi = limitFunction(
   (endpoint) => fetch(`https://api.example.com${endpoint}`).then(r => r.json()),
@@ -219,9 +219,9 @@ const results = await limit.map(largeArray, processItem, {
 
 ---
 
-## How p-cap improves on p-limit
+## How promise-cap improves on p-limit
 
-| Feature | p-limit | p-cap |
+| Feature | p-limit | promise-cap |
 |---|---|---|
 | Basic concurrency limiting | ✅ | ✅ |
 | Task priority | ❌ | ✅ |
@@ -238,12 +238,12 @@ const results = await limit.map(largeArray, processItem, {
 
 ## Warning: recursive limiters
 
-Calling the same `limit` inside a task it is already limiting creates a deadlock when `concurrency = 1`. p-cap detects this and rejects with `DeadlockError` + a `process.warning` so you can find it fast.
+Calling the same `limit` inside a task it is already limiting creates a deadlock when `concurrency = 1`. promise-cap detects this and rejects with `DeadlockError` + a `process.warning` so you can find it fast.
 
 ```js
 const limit = pCap(1);
 
-// ❌ This deadlocks — p-cap will reject and warn
+// ❌ This deadlocks — promise-cap will reject and warn
 await limit.run(async () => {
   await limit.run(innerTask, {}); // DeadlockError
 }, {});

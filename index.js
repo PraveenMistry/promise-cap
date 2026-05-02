@@ -83,7 +83,7 @@ class TimeoutError extends Error {
 class DeadlockError extends Error {
   constructor() {
     super(
-      '[p-cap] Deadlock detected: a task called the same limiter it is ' +
+      '[promise-cap] Deadlock detected: a task called the same limiter it is ' +
       'running inside. Use a separate limiter for nested calls.'
     );
     this.name = 'DeadlockError';

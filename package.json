@@ -1,6 +1,6 @@
 {
   "name": "promise-cap",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Run async functions with limited concurrency — priority queuing, AbortSignal, timeouts, pause/resume, deadlock detection. Zero dependencies.",
   "keywords": [
     "promise",
