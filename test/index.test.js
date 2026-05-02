@@ -3,8 +3,8 @@
 const assert = require('node:assert/strict');
 const { test, describe } = require('node:test');
 
-const pCap = require('../src/index.js');
-const { limitFunction, AbortError, TimeoutError, DeadlockError } = require('../src/index.js');
+const pCap = require('../index.js');
+const { limitFunction, AbortError, TimeoutError, DeadlockError } = require('../index.js');
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));

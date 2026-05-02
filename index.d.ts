@@ -95,7 +95,7 @@ export interface LimitFunctionOptions extends LimitOptions {
  * Create a concurrency limiter.
  *
  * @example
- * import pCap from 'p-cap';
+ * import pCap from 'promise-cap';
  *
  * const limit = pCap(3); // max 3 concurrent
  *
