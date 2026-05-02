@@ -1,0 +1,36 @@
+{
+  "name": "p-cap",
+  "version": "1.0.0",
+  "description": "Run async functions with limited concurrency — priority queuing, AbortSignal, timeouts, pause/resume, deadlock detection. Zero dependencies.",
+  "keywords": [
+    "promise",
+    "concurrency",
+    "limit",
+    "throttle",
+    "queue",
+    "async",
+    "priority",
+    "abort",
+    "timeout",
+    "rate-limit"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./index.js",
+  "exports": {
+    "import": "./index.mjs",
+    "require": "./index.js",
+    "default": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "index.mjs",
+    "index.d.ts",
+    "readme.md"
+  ],
+  "sideEffects": false,
+  "dependencies": {}
+}
